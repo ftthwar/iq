@@ -1,0 +1,6 @@
+{
+  "name": "نظام تسجيل المقبوضات والأجهزة - NanoPay",
+  "description": "تطبيق متكامل شبيه لتطبيقات الهاتف لإدارة وتسجيل مقبوضات اشتراكات الإنترنت وأجهزة النانو، مع إحصائيات دقيقة، ونظام صلاحيات الموظفين، وسجلات العمليات، ودعم الوضع الليلي وتصدير PDF.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

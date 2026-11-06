@@ -1,0 +1,78 @@
+{
+  "entities": {
+    "Receipt": {
+      "title": "Receipt",
+      "description": "A payment collection receipt for an internet subscription and optional nano device",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "receiptNumber": { "type": "string" },
+        "subscriberName": { "type": "string" },
+        "planType": { "type": "string", "enum": ["monthly", "three_months"] },
+        "planPrice": { "type": "number" },
+        "selectedOptionId": { "type": "string" },
+        "selectedOptionText": { "type": "string" },
+        "expectedCash": { "type": "number" },
+        "actualCashReceived": { "type": "number" },
+        "cashStatus": { "type": "string", "enum": ["paid", "unpaid", "partial"] },
+        "requiresNano": { "type": "boolean" },
+        "nanoReceived": { "type": "boolean" },
+        "nanoModel": { "type": "string" },
+        "nanoSerial": { "type": "string" },
+        "employeeId": { "type": "string" },
+        "employeeName": { "type": "string" },
+        "notes": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "receiptNumber", "subscriberName", "planType", "planPrice", "expectedCash", "actualCashReceived", "cashStatus", "employeeId", "employeeName", "createdAt", "updatedAt"]
+    },
+    "User": {
+      "title": "User",
+      "description": "An employee or admin account for recording receipts",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "username": { "type": "string" },
+        "password": { "type": "string" },
+        "fullName": { "type": "string" },
+        "role": { "type": "string", "enum": ["admin", "employee"] },
+        "phone": { "type": "string" },
+        "isActive": { "type": "boolean" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "username", "password", "fullName", "role", "isActive", "createdAt"]
+    },
+    "AuditLog": {
+      "title": "AuditLog",
+      "description": "Audit record of any collection, modification, or user management event",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "userId": { "type": "string" },
+        "userName": { "type": "string" },
+        "userRole": { "type": "string", "enum": ["admin", "employee"] },
+        "actionType": { "type": "string" },
+        "title": { "type": "string" },
+        "details": { "type": "string" },
+        "targetId": { "type": "string" }
+      },
+      "required": ["id", "timestamp", "userId", "userName", "userRole", "actionType", "title", "details"]
+    }
+  },
+  "firestore": {
+    "/receipts/{receiptId}": {
+      "schema": "Receipt",
+      "description": "Collection of all subscription receipts"
+    },
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Collection of employee and manager accounts"
+    },
+    "/auditLogs/{logId}": {
+      "schema": "AuditLog",
+      "description": "Collection of system audit logs"
+    }
+  }
+}
